@@ -1,5 +1,6 @@
-import pkg from "pg";
-const { Client } = pkg;
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
+import { client } from "./bdd-connexion.js";
 
 const client = new Client({
   host: "localhost",
@@ -20,10 +21,7 @@ async function getDataFromDatabase() {
 
     await client.end();
   } catch (error) {
-    console.error(
-      "Erreur",
-      error
-    );
+    console.error("Erreur", error);
   }
 }
 
